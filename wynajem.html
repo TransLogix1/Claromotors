@@ -2,8 +2,8 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Wynajem długoterminowy — Claro Motors</title>
-    <meta name="description" content="Wynajem długoterminowy samochodów — stała rata obejmująca serwis i ubezpieczenie. Sprawdź przykładowe propozycje Claro Motors.">
+    <title>Wynajem długoterminowy — wyszukiwarka ofert — Claro Motors</title>
+    <meta name="description" content="Przeszukaj oferty wynajmu długoterminowego, leasingu i kredytu samochodowego w jednym miejscu. Filtruj po marce, nadwoziu, paliwie i wielu innych kryteriach.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#101114">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap&subset=latin-ext" rel="stylesheet">
@@ -48,25 +48,39 @@
 <main>
     <section class="listing-hero">
         <div class="container">
-            <p class="breadcrumb"><a href="/">Claro Motors</a><span class="sep">/</span>Wynajem długoterminowy</p>
+            <p class="breadcrumb"><a href="/">Claro Motors</a><span class="sep">/</span>Wyszukiwarka ofert</p>
         </div>
 
         <div class="filter-panel">
             <div class="filter-toprow">
-                <select class="filter-select" disabled title="Wkrótce więcej typów nadwozia">
+                <select class="filter-select" id="f-body-top" disabled title="Filtr nadwozia dostępny niżej">
                     <option>Nadwozie</option>
                 </select>
 
-                <div class="type-toggle">
-                    <a href="leasing.html" class="">Leasing</a>
-                    <a href="wynajem.html" class="is-active">Wynajem</a>
+                <div class="type-toggle" role="tablist" aria-label="Rodzaj finansowania">
+                    <a href="#" data-type="leasing" role="tab">Leasing</a>
+                    <a href="#" data-type="wynajem" role="tab">Wynajem</a>
+                    <a href="#" data-type="kredyt" role="tab">Kredyt</a>
                 </div>
 
                 <div class="rate-range">
-                    <span>Rata / mies.</span>
-                    <strong>od 1 500 zł</strong>
+                    <span>Rata</span>
+                    <select id="f-rate-min" aria-label="Rata od">
+                        <option value="">od</option>
+                        <option value="1500">1 500 zł</option>
+                        <option value="2000">2 000 zł</option>
+                        <option value="2500">2 500 zł</option>
+                        <option value="3000">3 000 zł</option>
+                    </select>
                     <span>—</span>
-                    <strong>do 4 000+ zł</strong>
+                    <select id="f-rate-max" aria-label="Rata do">
+                        <option value="">do</option>
+                        <option value="2000">2 000 zł</option>
+                        <option value="2500">2 500 zł</option>
+                        <option value="3000">3 000 zł</option>
+                        <option value="3500">3 500 zł</option>
+                        <option value="4500">4 500+ zł</option>
+                    </select>
                 </div>
             </div>
 
@@ -78,24 +92,31 @@
                 <select id="f-drive"><option value="">Rodzaj napędu</option></select>
                 <select id="f-class"><option value="">Klasa pojazdu</option></select>
                 <select id="f-color"><option value="">Kolor pojazdu</option></select>
+                <select id="f-equipment"><option value="">Wyposażenie</option></select>
             </div>
 
-            <label class="filter-checkbox">
-                <input type="checkbox" id="privateClient">
-                Klient prywatny
-            </label>
+            <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:center;">
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="privateClient">
+                    Klient prywatny
+                </label>
+                <label class="filter-checkbox">
+                    <input type="checkbox" id="f-promo">
+                    Tylko promocje
+                </label>
+            </div>
         </div>
-        <p class="demo-note">Powyższe filtry działają na przykładowej bazie ofert — pełny, bieżący rynek sprawdza dla Ciebie indywidualny doradca.</p>
+        <p class="demo-note">Filtry działają na przykładowej bazie ofert (12 pojazdów) — pełny, bieżący rynek sprawdza dla Ciebie indywidualny doradca.</p>
     </section>
 
     <section class="listing-results">
         <div class="listing-results-head">
             <div>
-                <h1 class="reveal" data-reveal="fade-up">Wynajem długoterminowy samochodów</h1>
+                <h1 class="reveal" data-reveal="fade-up" id="resultsHeading">Wyniki wyszukiwania</h1>
                 <p class="listing-count" id="resultsCount">Ładowanie ofert…</p>
             </div>
             <div class="listing-actions">
-                <a href="negocjuj-oferte.html" class="filter-pill" style="border-color:#b87333;color:#101114;">Negocjuj ofertę</a>
+                <a href="negocjuj-oferte.html" class="filter-pill" style="border-color:#b87333;color:#101114;background:#b87333;">Negocjuj ofertę</a>
                 <select class="sort-select" id="sortSelect">
                     <option value="az">Alfabetycznie A-Z</option>
                     <option value="price-asc">Cena: od najniższej</option>
@@ -118,6 +139,7 @@
 </footer>
 <script src="enhancements.js" defer></script>
 <script>document.getElementById('cm-year').textContent = new Date().getFullYear();</script>
-<script src="listings.js" defer></script>
+<script>window.CM_DEFAULT_TYPE = "wynajem";</script>
+<script src="search.js" defer></script>
 </body>
 </html>
