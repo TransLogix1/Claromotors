@@ -526,21 +526,30 @@ main#contact #response-message[style*="block"]{
 .filter-grid select{
     width: 100%;
     -webkit-appearance:none; appearance:none;
-    background: transparent;
+    background-color: transparent;
     color: rgba(255,255,255,.82);
     border: 1px solid rgba(255,255,255,.18);
     border-radius: 999px;
-    padding: 13px 38px 13px 20px;
+    padding: 13px 40px 13px 20px;
     font-family: inherit;
     font-size: 13px;
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b87333' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0.8L9.2 5L5 9.2L0.8 5Z' fill='none' stroke='%23b87333' stroke-width='1.2'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 18px center;
-    transition: border-color .25s var(--cm-ease);
+    background-size: 11px 11px;
+    background-position: right 20px center;
+    transition: border-color .25s var(--cm-ease), background-image .2s var(--cm-ease);
 }
 .filter-grid select:hover, .filter-grid select:focus{ border-color: var(--cm-accent); outline: none; }
 .filter-grid select option{ background: #17181b; color:#fff; }
+
+/* Romb wypełniony na pełno miedzią, gdy filtr ma wybraną wartość
+   (klasa "has-value" dodawana przez search.js przy zmianie selecta) */
+.filter-grid select.has-value{
+    border-color: var(--cm-accent);
+    color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0.8L9.2 5L5 9.2L0.8 5Z' fill='%23b87333' stroke='%23b87333' stroke-width='1.2'/%3E%3C/svg%3E");
+}
 
 .filter-checkbox{
     display: inline-flex;
@@ -573,8 +582,11 @@ main#contact #response-message[style*="block"]{
     border: 1px solid #ddd;
     font-size: 13px;
     -webkit-appearance:none; appearance:none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23262626' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat:no-repeat; background-position: right 14px center;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0.8L9.2 5L5 9.2L0.8 5Z' fill='none' stroke='%23262626' stroke-width='1.2'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-size: 10px 10px;
+    background-position: right 15px center;
     cursor:pointer;
 }
 

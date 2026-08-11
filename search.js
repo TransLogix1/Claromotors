@@ -184,6 +184,21 @@
         });
     });
 
+    /* Romb w filtrach wypełnia się kolorem akcentu, gdy wybrano konkretną
+       wartość (nie pusty placeholder) — wizualna informacja "ten filtr jest
+       aktywny". Dotyczy 8 pigułkowych selectów w .filter-grid. */
+    var pillFilterKeys = ["brand", "body", "fuel", "gearbox", "drive", "cls", "color", "equipment"];
+    function updateHasValueState(selectEl) {
+        if (!selectEl) return;
+        selectEl.classList.toggle("has-value", selectEl.value !== "");
+    }
+    pillFilterKeys.forEach(function (key) {
+        if (els[key]) {
+            updateHasValueState(els[key]);
+            els[key].addEventListener("change", function () { updateHasValueState(els[key]); });
+        }
+    });
+
     ["brand", "body", "fuel", "gearbox", "drive", "cls", "color", "equipment", "rateMin", "rateMax", "sort"].forEach(function (key) {
         if (els[key]) els[key].addEventListener("change", render);
     });
