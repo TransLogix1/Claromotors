@@ -20,7 +20,27 @@
         });
     }
 
-    /* --- 2. Karuzela opinii klientów (zastępuje oryginalny opinie.bundle.js) --- */
+    /* --- 2. Akordeon podmenu "Oferta" na mobile --- */
+    document.querySelectorAll(".dropdown-toggle-mobile").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            var li = btn.closest("li.has-dropdown");
+            var isOpen = li.classList.toggle("is-open");
+            btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+    });
+
+    /* --- 3. Header reagujący na scroll (cień + lekkie przyciemnienie) --- */
+    var navEl = document.querySelector("header nav");
+    if (navEl) {
+        var onScroll = function () {
+            navEl.classList.toggle("cm-scrolled", window.scrollY > 12);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+    }
+
+    /* --- 4. Karuzela opinii klientów (zastępuje oryginalny opinie.bundle.js) --- */
     var opinions = document.querySelectorAll(".opinions .opinion");
     if (opinions.length > 1) {
         var current = 0;
@@ -36,7 +56,7 @@
         }
     }
 
-    /* --- 3. Scroll reveal dla elementów .reveal --- */
+    /* --- 5. Scroll reveal dla elementów .reveal --- */
     var revealEls = document.querySelectorAll(".reveal");
 
     if (reduceMotion || typeof IntersectionObserver === "undefined") {

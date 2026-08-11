@@ -108,19 +108,39 @@ header nav .nav-right{
 /* ---------------------------------------------------------
    3. DROPDOWN "Oferta" — desktop: hover, subtelne opadanie
    --------------------------------------------------------- */
+header nav ul.menu li.has-dropdown{
+    display: flex;
+    flex-direction: column;
+}
+header nav ul.menu .dropdown-head{
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-toggle-mobile{
+    display: none;
+}
+
 @media (min-width: 1025px){
 
     header nav ul.menu li.has-dropdown{
         position: relative;
+        flex-direction: row;
     }
 
-    header nav ul.menu li.has-dropdown > a{
+    header nav ul.menu .dropdown-head{
+        position: relative;
+    }
+
+    .dropdown-toggle-mobile{ display: none !important; }
+
+    header nav ul.menu li.has-dropdown > .dropdown-head > a{
         display: flex;
         align-items: center;
         gap: 5px;
     }
 
-    header nav ul.menu li.has-dropdown > a::after{
+    header nav ul.menu li.has-dropdown > .dropdown-head > a::after{
         content: '';
         width: 6px;
         height: 6px;
@@ -130,7 +150,7 @@ header nav .nav-right{
         transition: transform .3s var(--cm-ease);
     }
 
-    header nav ul.menu li.has-dropdown:hover > a::after{
+    header nav ul.menu li.has-dropdown:hover > .dropdown-head > a::after{
         transform: rotate(225deg) translateY(2px);
     }
 
@@ -143,6 +163,7 @@ header nav .nav-right{
         min-width: 240px;
         margin-top: 14px;
         padding: 10px 0;
+        max-height: none !important;
         background-color: var(--cm-dark);
         border-top: 2px solid var(--cm-accent);
         box-shadow: 0 24px 48px rgba(0,0,0,.45);
@@ -168,22 +189,124 @@ header nav .nav-right{
     }
 }
 
-/* Mobile: dropdown zawsze widoczny, lekko wcięty, bez toggle'a */
+/* Mobile: dropdown domyślnie zwinięty, jawny przycisk rozwijania (accordion) */
 @media (max-width: 1024px){
+    header nav ul.menu .dropdown-head{
+        justify-content: space-between;
+    }
+
+    header nav ul.menu li.has-dropdown > .dropdown-head > a{
+        flex: 1;
+    }
+
+    .dropdown-toggle-mobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        margin-right: 8px;
+        background: rgba(255,255,255,.06);
+        border-radius: 8px;
+        transition: background-color .3s var(--cm-ease), transform .3s var(--cm-ease);
+    }
+    .dropdown-toggle-mobile:active{ transform: scale(.92); }
+
+    .dropdown-toggle-icon{
+        position: relative;
+        width: 12px;
+        height: 12px;
+    }
+    .dropdown-toggle-icon::before,
+    .dropdown-toggle-icon::after{
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        background: var(--cm-accent);
+        transition: transform .35s var(--cm-ease);
+    }
+    .dropdown-toggle-icon::before{
+        width: 12px; height: 2px;
+        transform: translate(-50%, -50%);
+    }
+    .dropdown-toggle-icon::after{
+        width: 2px; height: 12px;
+        transform: translate(-50%, -50%);
+    }
+    .dropdown-toggle-mobile[aria-expanded="true"] .dropdown-toggle-icon::after{
+        transform: translate(-50%, -50%) rotate(90deg);
+        opacity: 0;
+    }
+    .dropdown-toggle-mobile[aria-expanded="true"]{
+        background: var(--cm-accent);
+    }
+    .dropdown-toggle-mobile[aria-expanded="true"] .dropdown-toggle-icon::before{
+        background: #101114;
+    }
+
     header nav ul.menu .dropdown{
         list-style: none;
-        padding: 0 0 10px 20px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: .001;
+        padding: 0 0 0 20px;
+        transition: max-height .45s var(--cm-ease), opacity .35s var(--cm-ease);
+    }
+    header nav ul.menu li.has-dropdown.is-open .dropdown{
+        max-height: 400px;
+        opacity: 1;
+        padding: 6px 0 14px 20px;
     }
 
     header nav ul.menu .dropdown li a{
-        padding: 12px 20px;
+        padding: 11px 20px;
         font-size: 13px;
         opacity: .8;
     }
+}
 
-    header nav ul.menu li.has-dropdown > a{
-        padding-bottom: 8px;
-    }
+/* ---------------------------------------------------------
+   3b. HEADER — reakcja na scroll (premium, "shrink on scroll")
+   --------------------------------------------------------- */
+header nav{
+    transition: box-shadow .4s var(--cm-ease), background-color .4s var(--cm-ease);
+}
+header nav.cm-scrolled{
+    box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    background-color: rgba(16,17,20,.97);
+}
+
+/* ---------------------------------------------------------
+   3c. Delikatny fade-in całej strony przy wejściu
+   --------------------------------------------------------- */
+body{
+    animation: cm-page-in .5s var(--cm-ease);
+}
+@keyframes cm-page-in{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   3d. Mikro-interakcje przycisków (hover/active) — "wow"
+   --------------------------------------------------------- */
+main section.text-with-color-bg a,
+.btn-outline-light,
+a[href="kontakt.html"][style*="border"],
+a[href="kontakt.html"][style*="border-radius"] {
+    transition: transform .3s var(--cm-ease), box-shadow .3s var(--cm-ease), background-color .3s var(--cm-ease), color .3s var(--cm-ease) !important;
+}
+main section.text-with-color-bg a:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(255,255,255,.08);
+}
+main section.text-with-color-bg a:active{
+    transform: translateY(0);
+}
+
+.filter-pill:hover, .type-toggle a:hover, .car-card:hover{
+    will-change: transform;
 }
 
 /* ---------------------------------------------------------
