@@ -1,0 +1,265 @@
+/* =========================================================
+   CLARO MOTORS — ENHANCEMENTS
+   Dokłada: rozszerzone menu (dropdown), telefon w headerze,
+   efekt blasku logo, płynne animacje reveal przy scrollu.
+   Nie modyfikuje istniejącego style.css — ładować PO nim.
+   ========================================================= */
+
+:root{
+    --cm-accent: #b87333;
+    --cm-accent-soft: rgba(184, 115, 51, .45);
+    --cm-dark: #101114;
+    --cm-ease: cubic-bezier(.16,.84,.44,1);
+}
+
+/* ---------------------------------------------------------
+   1. LOGO — subtelny efekt blasku (bez zmiany samego logo)
+   --------------------------------------------------------- */
+header nav #logo a{
+    transition: filter .45s var(--cm-ease);
+    will-change: filter;
+}
+
+header nav #logo a:hover,
+header nav #logo a:focus-visible{
+    filter:
+        drop-shadow(0 0 6px var(--cm-accent-soft))
+        drop-shadow(0 0 18px rgba(184, 115, 51, .25));
+}
+
+/* delikatny, jednorazowy "oddech" logo przy wejściu na stronę */
+@keyframes cm-logo-intro-glow{
+    0%   { filter: drop-shadow(0 0 0 rgba(184,115,51,0)); }
+    50%  { filter: drop-shadow(0 0 10px rgba(184,115,51,.35)); }
+    100% { filter: drop-shadow(0 0 0 rgba(184,115,51,0)); }
+}
+
+header nav #logo a.cm-intro{
+    animation: cm-logo-intro-glow 2.2s var(--cm-ease) .3s 1;
+}
+
+/* ---------------------------------------------------------
+   2. NAV — kontener prawej strony (telefon + hamburger + menu)
+   --------------------------------------------------------- */
+header nav .nav-right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Telefon w headerze — widoczny na desktopie */
+.nav-phone{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-right: 4px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .8px;
+    white-space: nowrap;
+    transition: border-color .3s var(--cm-ease), color .3s var(--cm-ease), background-color .3s var(--cm-ease);
+}
+
+.nav-phone-icon{
+    width: 14px;
+    height: 14px;
+    color: var(--cm-accent);
+    flex-shrink: 0;
+    transition: transform .3s var(--cm-ease);
+}
+
+.nav-phone:hover{
+    border-color: var(--cm-accent);
+    background-color: rgba(184, 115, 51, .08);
+}
+
+.nav-phone:hover .nav-phone-icon{
+    transform: rotate(-8deg) scale(1.05);
+}
+
+/* Duplikat numeru telefonu w mobilnym rozwijanym menu */
+.menu-phone-mobile{
+    display: none;
+}
+
+@media (max-width: 1024px){
+    .nav-phone-number{
+        display: none;
+    }
+    .nav-phone{
+        padding: 8px 10px;
+        margin-right: 0;
+        border-color: transparent;
+    }
+    .menu-phone-mobile{
+        display: block;
+        margin-top: 20px;
+        border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .menu-phone-mobile a{
+        color: var(--cm-accent) !important;
+        font-weight: 500;
+    }
+}
+
+/* ---------------------------------------------------------
+   3. DROPDOWN "Oferta" — desktop: hover, subtelne opadanie
+   --------------------------------------------------------- */
+@media (min-width: 1025px){
+
+    header nav ul.menu li.has-dropdown{
+        position: relative;
+    }
+
+    header nav ul.menu li.has-dropdown > a{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    header nav ul.menu li.has-dropdown > a::after{
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: transform .3s var(--cm-ease);
+    }
+
+    header nav ul.menu li.has-dropdown:hover > a::after{
+        transform: rotate(225deg) translateY(2px);
+    }
+
+    header nav ul.menu .dropdown{
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -8px);
+        min-width: 240px;
+        margin-top: 14px;
+        padding: 10px 0;
+        background-color: var(--cm-dark);
+        border-top: 2px solid var(--cm-accent);
+        box-shadow: 0 24px 48px rgba(0,0,0,.45);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .28s var(--cm-ease), transform .28s var(--cm-ease), visibility .28s;
+    }
+
+    header nav ul.menu li.has-dropdown:hover .dropdown,
+    header nav ul.menu li.has-dropdown:focus-within .dropdown{
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+    }
+
+    header nav ul.menu .dropdown li a{
+        padding: 12px 22px;
+        font-size: 11px;
+        white-space: nowrap;
+        letter-spacing: 1px;
+    }
+}
+
+/* Mobile: dropdown zawsze widoczny, lekko wcięty, bez toggle'a */
+@media (max-width: 1024px){
+    header nav ul.menu .dropdown{
+        list-style: none;
+        padding: 0 0 10px 20px;
+    }
+
+    header nav ul.menu .dropdown li a{
+        padding: 12px 20px;
+        font-size: 13px;
+        opacity: .8;
+    }
+
+    header nav ul.menu li.has-dropdown > a{
+        padding-bottom: 8px;
+    }
+}
+
+/* ---------------------------------------------------------
+   4. SCROLL REVEAL — płynne, czyste pojawianie się treści
+   --------------------------------------------------------- */
+.reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .9s var(--cm-ease), transform .9s var(--cm-ease);
+    will-change: opacity, transform;
+}
+
+.reveal[data-reveal="fade-left"]{
+    transform: translateX(-36px);
+}
+
+.reveal[data-reveal="fade-right"]{
+    transform: translateX(36px);
+}
+
+.reveal.in-view{
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Delikatne przejście teł między sekcjami — spójność, brak "cięć" */
+main section,
+main section.text-and-pic,
+main section.text-with-color-bg{
+    transition: background-color .4s ease;
+}
+
+/* ---------------------------------------------------------
+   5. IKONY KROKÓW ("Jak to działa") — subtelny hover
+   --------------------------------------------------------- */
+main#about_business section#main .box .step .icon{
+    transition: transform .4s var(--cm-ease), filter .4s var(--cm-ease);
+}
+main#about_business section#main .box:hover .icon{
+    transform: translateY(-4px);
+    filter: drop-shadow(0 6px 14px rgba(184,115,51,.18));
+}
+
+/* ---------------------------------------------------------
+   6. FORMULARZ KONTAKTOWY — stan focus w kolorze akcentu
+   --------------------------------------------------------- */
+main#contact input[type=text]:focus,
+main#contact input[type=email]:focus,
+main#contact input[type=tel]:focus,
+main#contact textarea:focus{
+    border-color: var(--cm-accent) !important;
+}
+
+main#contact #response-message{
+    display: none;
+}
+main#contact #response-message[style*="block"]{
+    animation: cm-fade-in .4s var(--cm-ease);
+}
+@keyframes cm-fade-in{
+    from{ opacity:0; transform: translateY(-6px); }
+    to{ opacity:1; transform: translateY(0); }
+}
+
+/* Uszanuj preferencje dostępności — brak animacji, jeśli user tego chce */
+@media (prefers-reduced-motion: reduce){
+    .reveal,
+    header nav #logo a,
+    header nav ul.menu .dropdown,
+    .nav-phone,
+    .nav-phone-icon{
+        transition: none !important;
+        animation: none !important;
+    }
+    .reveal{
+        opacity: 1;
+        transform: none;
+    }
+}

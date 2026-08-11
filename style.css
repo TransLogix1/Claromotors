@@ -1,0 +1,1237 @@
+header {
+    width: 100%
+}
+
+header nav {
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #101114;
+    width: 100%
+}
+
+header nav #logo {
+    padding: 20px
+}
+
+header nav #logo a {
+    display: inline-block;
+    width: 190px;
+    height: 20px;
+    background: url(images/logo_claro_motors.png) center center/contain no-repeat
+}
+
+header nav label.menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    user-select: none
+}
+
+header nav label.menu-icon .navicon {
+    background: #fff;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 20px
+}
+
+header nav label.menu-icon .navicon:before,header nav label.menu-icon .navicon:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%
+}
+
+header nav label.menu-icon .navicon:before {
+    top: 6px
+}
+
+header nav label.menu-icon .navicon:after {
+    top: -6px
+}
+
+header nav input.menu-btn {
+    display: none
+}
+
+header nav input.menu-btn:checked ~ .menu {
+    transform: scaleX(1);
+    opacity: 1
+}
+
+header nav input.menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent
+}
+
+header nav input.menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg)
+}
+
+header nav input.menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg)
+}
+
+header nav input.menu-btn:checked ~ .menu-icon .navicon:before,header nav input.menu-btn:checked ~ .menu-icon .navicon:after {
+    top: 0
+}
+
+header nav ul.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    margin-top: 63px;
+    padding: 0;
+    background-color: #101114;
+    list-style: none;
+    overflow: hidden;
+    transform-origin: 0% 0%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-out
+}
+
+header nav ul.menu a {
+    display: block;
+    padding: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1.2px
+}
+
+header nav ul.menu a.active,header nav ul.menu a:hover {
+    color: #b87333
+}
+
+@media (min-width: 1025px) {
+    header nav label.menu-icon {
+        display:none
+    }
+
+    header nav ul.menu {
+        position: static;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        max-width: 500px;
+        margin-top: 0;
+        transform: translateX(0)
+    }
+
+    header nav ul.menu a {
+        padding: 10px;
+        font-size: 11px;
+        letter-spacing: 1px
+    }
+}
+
+main {
+    width: 100%
+}
+
+main section {
+    width: 100%;
+    margin: 0 auto
+}
+
+main section p {
+    text-align: justify;
+    line-height: 1.6em
+}
+
+main section.only-text {
+    max-width: 900px;
+    padding: 100px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center
+}
+
+main section.only-text h2 {
+    margin-bottom: 40px;
+    font-size: 35px;
+    text-align: center
+}
+
+main section.only-text p {
+    text-align: center
+}
+
+main section.only-text p:nth-of-type(1) {
+    margin-bottom: 40px
+}
+
+main section._pic-1 {
+    background: url(images/main-pic-1.jpg)
+}
+
+main section.parallax {
+    width: 100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+main section.parallax .row {
+    width: 100%;
+    display: flex
+}
+
+main section.parallax .row.left {
+    justify-content: flex-start
+}
+
+main section.parallax .row.right {
+    justify-content: flex-end
+}
+
+main section.parallax .row .text-container {
+    width: 50%;
+    height: 650px;
+    display: flex;
+    align-items: center
+}
+
+main section.parallax .row .text-container.dark {
+    background-color: #262626;
+    color: #e3e3e3;
+    justify-content: flex-end
+}
+
+main section.parallax .row .text-container.bright {
+    background-color: #fff;
+    color: #262626;
+    justify-content: flex-start
+}
+
+main section.parallax .row .text-container .text {
+    width: 100%;
+    max-width: 900px;
+    padding: 0 60px
+}
+
+main section.text-with-color-bg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    background-color: #101114;
+    color: #e3e3e3
+}
+
+main section.text-with-color-bg h3 {
+    margin-bottom: 40px
+}
+
+main section.text-with-color-bg ul {
+    margin-bottom: 40px
+}
+
+main section.text-with-color-bg ul li {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.8em
+}
+
+main section.text-with-color-bg a {
+    display: block;
+    text-decoration: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid #fff;
+    color: #fff
+}
+
+main section.text-with-color-bg a:hover {
+    background-color: #fff;
+    color: #101114
+}
+
+main section.text-and-pic {
+    display: flex;
+    justify-content: center
+}
+
+main section.text-and-pic.gray-bg {
+    background-color: #f5f5f7
+}
+
+main section.text-and-pic.dark-gray-bg {
+    background-color: #262626;
+    color: #e3e3e3
+}
+
+main section.text-and-pic .container {
+    display: flex;
+    width: 100%
+}
+
+main section.text-and-pic .container.reverse {
+    flex-direction: row-reverse
+}
+
+main section.text-and-pic .container .picture {
+    width: 50%;
+    height: 650px
+}
+
+main section.text-and-pic .container .picture._pic-2 {
+    background: url(images/main-pic-2.jpg) center center/cover no-repeat
+}
+
+main section.text-and-pic .container .picture._pic-3 {
+    background: url(images/main-pic-3.jpg) center center/cover no-repeat
+}
+
+main section.text-and-pic .container .picture._pic-4 {
+    background: url(images/main-pic-4.jpg) center center/cover no-repeat
+}
+
+main section.text-and-pic .container .text-container {
+    width: 50%;
+    display: flex
+}
+
+main section.text-and-pic .container .text-container.right {
+    justify-content: flex-end
+}
+
+main section.text-and-pic .container .text-container .text {
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 60px
+}
+
+main section.text-and-pic .container .text-container .text h3 {
+    margin-bottom: 40px
+}
+
+main section.text-and-pic .container .text-container .text p {
+    margin-bottom: 20px
+}
+
+main section.text-and-pic .container .text-container .text p:last-of-type {
+    margin-bottom: 0
+}
+
+main section.opinions {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(images/opinions-bg.jpg) no-repeat fixed top;
+    background-size: cover
+}
+
+main section.opinions .darker-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4)
+}
+
+main section.opinions .darker-bg .opinion {
+    max-width: 500px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s linear;
+    position: absolute
+}
+
+main section.opinions .darker-bg .opinion:first-child {
+    visibility: visible;
+    opacity: 1
+}
+
+main section.opinions .darker-bg .opinion.fade-in {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: .5s
+}
+
+main section.opinions .darker-bg .opinion.fade-out {
+    visibility: hidden;
+    opacity: 0
+}
+
+main section.opinions .darker-bg .opinion p {
+    color: #e8e8e8;
+    text-align: center
+}
+
+main section.opinions .darker-bg .opinion p.text {
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    padding: 25px
+}
+
+main section.opinions .darker-bg .opinion p.author {
+    margin-top: 10px;
+    text-align: center
+}
+
+main section#title {
+    width: 100%;
+    height: 100vh;
+    background: url(images/title.jpg) no-repeat fixed center;
+    background-size: cover
+}
+
+main section#title .darker-title-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 0 10px
+}
+
+main section#title .darker-title-bg h2,main section#title .darker-title-bg p {
+    color: #fff;
+    font-weight: 300;
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.4em
+}
+
+main section#title .darker-title-bg .short-logo {
+    display: inline-block;
+    width: 83px;
+    height: 15px;
+    background: url(images/short_logo_claro_motors.png) center/cover no-repeat
+}
+
+@media (max-width: 1024px) {
+    main section#title {
+        background:url(images/title.jpg) center/cover no-repeat;
+        background-attachment: scroll
+    }
+
+    main section.text-and-pic .container {
+        flex-direction: column
+    }
+
+    main section.text-and-pic .container.reverse {
+        flex-direction: column
+    }
+
+    main section.text-and-pic .container .picture {
+        width: 100%;
+        height: 40vh
+    }
+
+    main section.text-and-pic .container .text-container {
+        width: 100%
+    }
+
+    main section.text-and-pic .container .text-container.right {
+        justify-content: normal
+    }
+
+    main section.text-and-pic .container .text-container .text {
+        max-width: 100%;
+        padding: 60px
+    }
+
+    main section.parallax {
+        background: none;
+        display: flex;
+        flex-direction: column
+    }
+
+    main section.parallax .row {
+        align-items: center
+    }
+
+    main section.parallax .row.left,main section.parallax .row.right {
+        justify-content: center
+    }
+
+    main section.parallax .row .text-container {
+        width: 100%;
+        height: auto
+    }
+
+    main section.parallax .row .text-container.dark,main section.parallax .row .text-container.bright {
+        justify-content: center
+    }
+
+    main section.parallax .row .text-container .text {
+        max-width: 100%;
+        padding: 100px 60px
+    }
+
+    main section.opinions {
+        background: url(images/opinions-bg.jpg) top center/cover no-repeat;
+        background-attachment: scroll
+    }
+}
+
+@media (max-width: 500px) {
+    main section p {
+        text-align:left
+    }
+
+    main section.only-text h2 {
+        font-size: 30px
+    }
+
+    main section.parallax .row .text-container .text {
+        padding: 60px 25px
+    }
+
+    main section.text-with-color-bg {
+        padding: 60px 25px
+    }
+
+    main section.text-with-color-bg ul {
+        padding-left: 25px
+    }
+
+    main section.text-and-pic .container .text-container .text {
+        padding: 60px 25px
+    }
+
+    main section.opinions {
+        height: 100vh
+    }
+}
+
+@media (min-width: 768px) {
+    main section#title .darker-title-bg h2,main section#title .darker-title-bg p {
+        font-size:2em
+    }
+
+    main section#title .darker-title-bg .short-logo {
+        width: 125px;
+        height: 23px
+    }
+}
+
+main #section-picture {
+    width: 100%;
+    height: 400px
+}
+
+main #section-picture .dark-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 60px
+}
+
+main #section-picture .dark-bg h2 {
+    width: 100%;
+    max-width: 1024px;
+    font-size: 55px;
+    font-weight: 500;
+    color: #e8e8e8;
+    letter-spacing: 3px;
+    padding: 0 60px
+}
+
+main .section-container {
+    width: 100%;
+    background: linear-gradient(to bottom, white 0%, whitesmoke 47%, #dcdbdc 76%, #c7c5c7 100%)
+}
+
+main#offer #section-picture {
+    background: url(images/offer_main.jpg) center center/cover no-repeat
+}
+
+main#offer section#main p {
+    padding-bottom: 40px;
+    line-height: 1.6em
+}
+
+main#offer section#main p:last-of-type {
+    padding-bottom: 60px
+}
+
+main#offer section#main hr {
+    border-top: 1px solid gray;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 30px
+}
+
+main#contact #section-picture {
+    background: url(images/contact_main.jpg) center center/cover no-repeat
+}
+
+main#about_business #section-picture {
+    background: url(images/about_business_main.jpg) center center/cover no-repeat
+}
+
+main#about_business section#main .box {
+    margin: 80px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+main#about_business section#main .box:first-of-type {
+    margin-top: 0
+}
+
+main#about_business section#main .box:last-of-type {
+    margin-bottom: 0
+}
+
+main#about_business section#main .box .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 128px;
+    height: 180px;
+    margin-bottom: 30px
+}
+
+main#about_business section#main .box .step .icon {
+    width: 128px;
+    height: 128px
+}
+
+main#about_business section#main .box .step .icon._icon-1 {
+    background: url(images/icon-1.png) center center/cover no-repeat
+}
+
+main#about_business section#main .box .step .icon._icon-2 {
+    background: url(images/icon-2.png) center center/cover no-repeat
+}
+
+main#about_business section#main .box .step .icon._icon-3 {
+    background: url(images/icon-3.png) center center/cover no-repeat
+}
+
+main#about_business section#main .box .step .icon._icon-4 {
+    background: url(images/icon-4.png) center center/cover no-repeat
+}
+
+main#about_business section#main .box .step .icon._icon-5 {
+    background: url(images/icon-5.png) center center/cover no-repeat
+}
+
+main#about_business section#main .box .text {
+    width: 100%
+}
+
+main#about_business section#main .box .text h3 {
+    text-align: center
+}
+
+main#about_business section#main .box .text p {
+    margin-top: 20px;
+    padding-bottom: 0;
+    text-align: left
+}
+
+@media (min-width: 600px) {
+    main#about_business section#main .box {
+        flex-direction:row
+    }
+
+    main#about_business section#main .box .step {
+        margin-bottom: 0
+    }
+
+    main#about_business section#main .box .text {
+        padding-left: 60px
+    }
+
+    main#about_business section#main .box .text h3 {
+        text-align: left
+    }
+}
+
+@media (min-width: 900px) {
+    main#about_business section#main .box {
+        margin:100px 0
+    }
+
+    main#about_business section#main .box:first-of-type {
+        margin-top: 0
+    }
+
+    main#about_business section#main .box.left {
+        justify-content: flex-start
+    }
+
+    main#about_business section#main .box.right {
+        justify-content: flex-end
+    }
+
+    main#about_business section#main .box .text {
+        width: calc(60% - 128px)
+    }
+}
+
+main#about_company #section-picture {
+    background: url(images/about_company_main.jpg) center center/cover no-repeat
+}
+
+main#about_company .contact-data-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+main#about_company .contact-data-container .contact-data-picture {
+    background: url(images/contact-data-picture.jpg) center 0/cover no-repeat;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 30px
+}
+
+main#about_company .contact-data-container .contact-data-info:not(:last-of-type) {
+    margin-bottom: 30px
+}
+
+main#about_company .contact-data-container .contact-data-info p {
+    width: 100%;
+    text-align: center;
+    color: #101114;
+    padding-bottom: 0
+}
+
+main#about_company .contact-data-container .contact-data-info p.position {
+    font-size: 14px;
+    padding-bottom: 10px
+}
+
+main#about_company .contact-data-container .contact-data-info a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #101114;
+    padding-bottom: 10px
+}
+
+main#about_company .contact-data-container .contact-data-info a:last-child {
+    padding-bottom: 0
+}
+
+main#privacy_policy #section-picture {
+    background: url(images/privacy_policy_main.jpg) center center/cover no-repeat
+}
+
+main#privacy_policy section#main p:first-of-type {
+    padding-bottom: 15px
+}
+
+main#privacy_policy section#main p:last-of-type {
+    padding-bottom: 0
+}
+
+main#privacy_policy section#main ol {
+    margin-left: 20px
+}
+
+main#privacy_policy section#main .sub-list {
+    margin-left: 20px;
+    list-style-type: upper-roman
+}
+
+main#privacy_policy section#main li {
+    text-align: left;
+    line-height: 1.6em;
+    margin-bottom: 15px
+}
+
+@media (max-width: 530px) {
+    main#privacy_policy #section-picture .dark-bg h2 {
+        font-size:10vw
+    }
+}
+
+main section#main {
+    padding: 60px;
+    max-width: 1024px
+}
+
+main section#main h2 {
+    font-size: 3em;
+    padding-bottom: 40px;
+    font-weight: 500
+}
+
+main section#main h3 {
+    padding-bottom: 40px
+}
+
+main section#main p {
+    padding-bottom: 40px;
+    text-align: left;
+    line-height: 1.6em
+}
+
+main section#main p.with-list {
+    padding-bottom: 30px
+}
+
+@media (max-width: 500px) {
+    main section#main {
+        padding:60px 25px
+    }
+
+    main #section-picture .dark-bg h2 {
+        padding: 0 25px
+    }
+}
+
+@media (min-height: 1355px) {
+    main#about_company .section-container {
+        height:calc(100vh - 453px)
+    }
+}
+
+footer {
+    flex-direction: column;
+    width: 100%;
+    background-color: #101114
+}
+
+footer section {
+    width: 100%;
+    color: rgba(255,255,255,0.5)
+}
+
+footer section a {
+    color: rgba(255,255,255,0.5)
+}
+
+footer section#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px
+}
+
+footer section#contact .contact-data {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    height: 70px;
+    margin-bottom: 10px;
+    font-weight: 300
+}
+
+footer section#contact .contact-data p {
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.5)
+}
+
+footer section#contact .contact-data a {
+    display: inline-block;
+    width: 100%;
+    text-align: center
+}
+
+footer section#contact .social-media {
+    display: flex
+}
+
+footer section#contact .social-media a {
+    display: inline-block;
+    width: 48px;
+    height: 48px
+}
+
+footer section#contact .social-media a.facebook {
+    background: url(images/social_media_facebook.svg) center center/cover no-repeat
+}
+
+footer section#contact .social-media a.instagram {
+    background: url(images/social_media_instagram.svg) center center/cover no-repeat
+}
+
+footer section#privacy-policy {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px
+}
+
+footer section#privacy-policy.small-padding {
+    padding-top: 10px
+}
+
+footer section#privacy-policy .link {
+    display: block;
+    text-decoration: underline;
+    font-weight: 300
+}
+
+footer section#created-by {
+    display: flex;
+    justify-content: flex-end
+}
+
+footer section#created-by p {
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    padding: 20px 0;
+    letter-spacing: .9px
+}
+
+footer section#created-by p a.copy-rights-logo {
+    display: inline-block;
+    width: 102px;
+    height: 8px;
+    background: url(images/logo_claro_motors.png) center/cover no-repeat
+}
+
+@media (min-width: 768px) {
+    footer section#created-by p {
+        font-size:12px
+    }
+
+    footer section#created-by p a.copy-rights-logo {
+        width: 118px;
+        height: 9px
+    }
+}
+
+main#contact section#main {
+    padding-bottom: 60px
+}
+
+main#contact section#main .contact-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between
+}
+
+main#contact section#main .contact-container .contact-data {
+    width: 300px
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-picture {
+    background: url(images/contact-data-picture.jpg) center 0/cover no-repeat;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-bottom: 30px
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-info:not(:last-of-type) {
+    margin-bottom: 30px
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-info p {
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    color: #101114;
+    padding-bottom: 10px
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-info a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #101114;
+    font-size: 20px;
+    padding-bottom: 10px
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-info a:last-child {
+    padding-bottom: 0
+}
+
+main#contact section#main .contact-container .contact-data .contact-data-container .contact-data-info a.mail {
+    font-size: 18px
+}
+
+main#contact section#main .contact-container .contact-form {
+    width: calc(100% - 370px)
+}
+
+main#contact section#main .contact-container .contact-form form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap
+}
+
+main#contact section#main .contact-container .contact-form form .form-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+main#contact section#main .contact-container .contact-form form .form-row:not(:last-child) {
+    margin-bottom: 30px
+}
+
+main#contact section#main .contact-container .contact-form form .form-row.half {
+    width: calc(50% - 15px);
+    margin-right: 30px
+}
+
+main#contact section#main .contact-container .contact-form form .form-row.half:nth-child(2n) {
+    margin-right: 0
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container {
+    position: relative;
+    margin-bottom: 24px
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    outline: none
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container input[type=checkbox]:checked ~ .checkbox-custom {
+    background-color: #262626;
+    -webkit-transform: rotate(0deg) scale(1);
+    -ms-transform: rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+    border: 2px solid #262626
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container input[type=checkbox]:checked ~ .checkbox-custom::after {
+    -webkit-transform: rotate(45deg) scale(1);
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
+    left: 7px;
+    top: 0;
+    width: 5px;
+    height: 14px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    background-color: transparent
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container .checkbox-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    border: 2px solid #262626
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container .checkbox-custom::after {
+    position: absolute;
+    content: "";
+    left: 12px;
+    top: 12px;
+    height: 0;
+    width: 0;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(0deg) scale(0);
+    -ms-transform: rotate(0deg) scale(0);
+    transform: rotate(0deg) scale(0);
+    opacity: 1;
+    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label.checkbox-container .checkbox-info {
+    position: absolute;
+    top: 5px;
+    left: 32px;
+    font-size: 11px
+}
+
+main#contact section#main .contact-container .contact-form form .form-row label {
+    margin-bottom: 15px;
+    font-size: 22px
+}
+
+main#contact section#main .contact-container .contact-form form .form-row input[type=text],main#contact section#main .contact-container .contact-form form .form-row input[type=email],main#contact section#main .contact-container .contact-form form .form-row input[type=tel] {
+    border: 3px solid #101114;
+    height: 50px;
+    padding: 0 10px;
+    font-size: 18px;
+    outline: none;
+    background-color: transparent
+}
+
+main#contact section#main .contact-container .contact-form form .form-row textarea {
+    border: 3px solid #101114;
+    height: 150px;
+    padding: 20px;
+    font-size: 18px;
+    outline: none;
+    background-color: transparent
+}
+
+main#contact section#main .contact-container .contact-form form .form-row button {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    height: 50px;
+    background-color: #101114;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    border: none;
+    outline: none
+}
+
+main#contact section#main .contact-container .contact-form form .form-row button:hover {
+    border: 3px solid #101114;
+    background-color: transparent;
+    color: #101114
+}
+
+main#contact section#main .contact-container .contact-form form .form-row button.disabled {
+    background-color: #858585;
+    color: #101114;
+    cursor: default;
+    border: none
+}
+
+main#contact section#main .contact-container .contact-form form .form-row button.disabled:hover {
+    border: none;
+    background-color: #858585
+}
+
+main#contact section#main .contact-container .contact-form form .form-row input[type=tel].error,main#contact section#main .contact-container .contact-form form .form-row input[type=email].error,main#contact section#main .contact-container .contact-form form .form-row textarea.error {
+    border-color: #E01546
+}
+
+main#contact section#main .contact-container .contact-form form .form-row div.error {
+    color: #E01546;
+    margin: 5px 0 0;
+    font-size: 0.8rem
+}
+
+main#contact section#main .contact-container .contact-form form div#response-message {
+    display: none;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #53a66c;
+    color: #000;
+    font-size: 17px;
+    text-align: center
+}
+
+main#contact section#main .contact-container .contact-form form div#response-message.error {
+    background-color: #cf5b57
+}
+
+@media (max-width: 768px) {
+    main#contact .section-container section#main .contact-container {
+        flex-direction:column-reverse
+    }
+
+    main#contact .section-container section#main .contact-container .contact-data {
+        width: 100%
+    }
+
+    main#contact .section-container section#main .contact-container .contact-form {
+        width: 100%;
+        margin-bottom: 60px
+    }
+}
+
+@media (max-width: 500px) {
+    main#contact .section-container section#main .contact-container .contact-form .form-row.half {
+        width:100%;
+        margin-right: 0
+    }
+}
+
+@media (min-height: 1266px) {
+    main#contact .section-container {
+        height:calc(100vh - 454px)
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: 'Montserrat', Arial, sans-serif;
+    background-color: #fff;
+    color: #262626
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    font-size: 1.8em
+}
+
+h3 {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    font-size: 1.5em
+}
+
+p,li {
+    font-weight: 300
+}
+
+a {
+    text-decoration: none
+}
