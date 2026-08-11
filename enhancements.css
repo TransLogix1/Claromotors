@@ -123,6 +123,29 @@ header nav ul.menu .dropdown-head{
 
 @media (min-width: 1025px){
 
+    /* Naprawa ściśniętego menu: oryginalny max-width:500px był myślany
+       na 5 krótkich pozycji, a mamy teraz 6 + telefon obok — usuwamy
+       sztywny limit i pilnujemy, żeby tekst nigdy się nie łamał. */
+    header nav ul.menu{
+        max-width: none;
+        justify-content: flex-start;
+        gap: 2px;
+        flex-shrink: 0;
+        /* KRYTYCZNE: oryginalny style.css ma "overflow: hidden" na tym
+           elemencie (potrzebne dla mobilnego wysuwania menu) — na desktopie
+           to obcinało rozwijany dropdown "Oferta", zanim zdążył się pokazać. */
+        overflow: visible;
+    }
+
+    header nav ul.menu a{
+        white-space: nowrap;
+        padding: 10px 15px;
+    }
+
+    header nav .nav-right{
+        gap: 26px;
+    }
+
     header nav ul.menu li.has-dropdown{
         position: relative;
         flex-direction: row;
@@ -138,6 +161,7 @@ header nav ul.menu .dropdown-head{
         display: flex;
         align-items: center;
         gap: 5px;
+        white-space: nowrap;
     }
 
     header nav ul.menu li.has-dropdown > .dropdown-head > a::after{
@@ -159,18 +183,19 @@ header nav ul.menu .dropdown-head{
         position: absolute;
         top: 100%;
         left: 50%;
-        transform: translate(-50%, -8px);
-        min-width: 240px;
-        margin-top: 14px;
+        transform: translate(-50%, -18px) scale(.96);
+        transform-origin: top center;
+        min-width: 250px;
+        margin-top: 18px;
         padding: 10px 0;
         max-height: none !important;
         background-color: var(--cm-dark);
         border-top: 2px solid var(--cm-accent);
-        box-shadow: 0 24px 48px rgba(0,0,0,.45);
+        box-shadow: 0 30px 60px rgba(0,0,0,.5);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        transition: opacity .28s var(--cm-ease), transform .28s var(--cm-ease), visibility .28s;
+        transition: opacity .4s var(--cm-ease), transform .4s var(--cm-ease), visibility .4s;
     }
 
     header nav ul.menu li.has-dropdown:hover .dropdown,
@@ -178,11 +203,21 @@ header nav ul.menu .dropdown-head{
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    /* Mały "mostek" łączący link z dropdownem, żeby mysz mogła swobodnie
+       przejechać z "Oferta" do listy bez zamykania się dropdownu */
+    header nav ul.menu li.has-dropdown::after{
+        content: '';
+        position: absolute;
+        left: 0; right: 0;
+        top: 100%;
+        height: 18px;
     }
 
     header nav ul.menu .dropdown li a{
-        padding: 12px 22px;
+        padding: 13px 24px;
         font-size: 11px;
         white-space: nowrap;
         letter-spacing: 1px;
