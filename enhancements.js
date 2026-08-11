@@ -70,4 +70,14 @@
     revealEls.forEach(function (el) {
         observer.observe(el);
     });
+
+    /* Zabezpieczenie awaryjne: jeśli z jakiegokolwiek powodu (stary silnik,
+       przeglądarka w trybie podglądu, edge case) obserwator nie zadziała,
+       po 2,5s wymuszamy pokazanie WSZYSTKICH elementów .reveal — treść
+       nigdy nie zostaje trwale niewidoczna. */
+    setTimeout(function () {
+        document.querySelectorAll(".reveal:not(.in-view)").forEach(function (el) {
+            el.classList.add("in-view");
+        });
+    }, 2500);
 })();

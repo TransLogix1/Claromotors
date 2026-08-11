@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Leasing samochodów — Claro Motors</title>
+    <meta name="description" content="Leasing operacyjny i finansowy — sprawdź przykładowe propozycje i dobierz najlepsze warunki z indywidualnym doradcą Claro Motors.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101114">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="enhancements.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+        <div id="logo"><a href='/'></a></div>
+        <div class="nav-right">
+            <a class="nav-phone" href="tel:517195097" aria-label="Zadzwoń: 517 195 097">
+                <svg class="nav-phone-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.5 6.5l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="nav-phone-number">517 195 097</span>
+            </a>
+            <input type="checkbox" id="menu-btn" class="menu-btn"/>
+            <label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
+            <ul class="menu">
+                <li><a href="/">Strona główna</a></li>
+                <li class="has-dropdown">
+                    <a class="active" href="oferta.html">Oferta</a>
+                    <ul class="dropdown">
+                        <li><a class="active" href="leasing.html">Leasing</a></li>
+                        <li><a href="wynajem.html">Wynajem długoterminowy</a></li>
+                        <li><a href="kalkulatory.html">Kalkulatory</a></li>
+                        <li><a href="negocjuj-oferte.html">Negocjuj ofertę</a></li>
+                        <li><a href="cesja.html">Cesja</a></li>
+                    </ul>
+                </li>
+                <li><a href="jak-to-dziala.html">Jak to działa</a></li>
+                <li><a href="o-nas.html">O nas</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li class="menu-phone-mobile"><a href="tel:517195097">517 195 097</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="listing-hero">
+        <div class="container">
+            <p class="breadcrumb"><a href="/">Claro Motors</a><span class="sep">/</span>Leasing</p>
+        </div>
+
+        <div class="filter-panel">
+            <div class="filter-toprow">
+                <select class="filter-select" disabled title="Wkrótce więcej typów nadwozia">
+                    <option>Nadwozie</option>
+                </select>
+
+                <div class="type-toggle">
+                    <a href="leasing.html" class="is-active">Leasing</a>
+                    <a href="wynajem.html" class="">Wynajem</a>
+                </div>
+
+                <div class="rate-range">
+                    <span>Rata / mies.</span>
+                    <strong>od 1 500 zł</strong>
+                    <span>—</span>
+                    <strong>do 4 000+ zł</strong>
+                </div>
+            </div>
+
+            <div class="filter-grid">
+                <select id="f-brand"><option value="">Marka pojazdu</option></select>
+                <select id="f-body"><option value="">Nadwozie</option></select>
+                <select id="f-fuel"><option value="">Rodzaj paliwa</option></select>
+                <select id="f-gearbox"><option value="">Skrzynia biegów</option></select>
+                <select id="f-drive"><option value="">Rodzaj napędu</option></select>
+                <select id="f-class"><option value="">Klasa pojazdu</option></select>
+                <select id="f-color"><option value="">Kolor pojazdu</option></select>
+            </div>
+
+            <label class="filter-checkbox">
+                <input type="checkbox" id="privateClient">
+                Klient prywatny
+            </label>
+        </div>
+        <p class="demo-note">Powyższe filtry działają na przykładowej bazie ofert — pełny, bieżący rynek sprawdza dla Ciebie indywidualny doradca.</p>
+    </section>
+
+    <section class="listing-results">
+        <div class="listing-results-head">
+            <div>
+                <h1 class="reveal" data-reveal="fade-up">Leasing samochodów — aktualne propozycje</h1>
+                <p class="listing-count" id="resultsCount">Ładowanie ofert…</p>
+            </div>
+            <div class="listing-actions">
+                <a href="negocjuj-oferte.html" class="filter-pill" style="border-color:#b87333;color:#101114;">Negocjuj ofertę</a>
+                <select class="sort-select" id="sortSelect">
+                    <option value="az">Alfabetycznie A-Z</option>
+                    <option value="price-asc">Cena: od najniższej</option>
+                    <option value="price-desc">Cena: od najwyższej</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="car-grid" id="carGrid"></div>
+    </section>
+</main>
+
+<footer>
+    <section id="privacy-policy">
+        <a class="link" href="polityka-prywatnosci.html">Polityka prywatności</a>
+    </section>
+    <section id="created-by">
+        <p><span id="cm-year"></span> &copy; <a class="copy-rights-logo" href="/"></a></p>
+    </section>
+</footer>
+<script src="enhancements.js" defer></script>
+<script>document.getElementById('cm-year').textContent = new Date().getFullYear();</script>
+<script src="listings.js" defer></script>
+</body>
+</html>
